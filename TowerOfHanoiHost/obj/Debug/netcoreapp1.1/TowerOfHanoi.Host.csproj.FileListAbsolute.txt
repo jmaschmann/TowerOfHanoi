@@ -1,0 +1,14 @@
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoiHost\bin\Debug\netcoreapp1.1\TowerOfHanoi.Host.deps.json
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoiHost\bin\Debug\netcoreapp1.1\TowerOfHanoi.Host.runtimeconfig.json
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoiHost\bin\Debug\netcoreapp1.1\TowerOfHanoi.Host.runtimeconfig.dev.json
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoiHost\bin\Debug\netcoreapp1.1\TowerOfHanoi.Host.dll
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoiHost\bin\Debug\netcoreapp1.1\TowerOfHanoi.Host.pdb
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoiHost\bin\Debug\netcoreapp1.1\TowerOfHanoi.Logic.dll
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoiHost\bin\Debug\netcoreapp1.1\TowerOfHanoi.Logic.pdb
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoiHost\obj\Debug\netcoreapp1.1\TowerOfHanoi.Host.csprojAssemblyReference.cache
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoiHost\obj\Debug\netcoreapp1.1\TowerOfHanoi.Host.csproj.CoreCompileInputs.cache
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoiHost\obj\Debug\netcoreapp1.1\TowerOfHanoi.Host.AssemblyInfoInputs.cache
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoiHost\obj\Debug\netcoreapp1.1\TowerOfHanoi.Host.AssemblyInfo.cs
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoiHost\obj\Debug\netcoreapp1.1\TowerOfHanoi.Host.csproj.CopyComplete
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoiHost\obj\Debug\netcoreapp1.1\TowerOfHanoi.Host.dll
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoiHost\obj\Debug\netcoreapp1.1\TowerOfHanoi.Host.pdb

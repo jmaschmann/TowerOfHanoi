@@ -1,0 +1,17 @@
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\bin\Release\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\bin\Release\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\bin\Release\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\bin\Release\netcoreapp2.0\TowerOfHanoi.Tests.deps.json
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\bin\Release\netcoreapp2.0\TowerOfHanoi.Tests.runtimeconfig.json
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\bin\Release\netcoreapp2.0\TowerOfHanoi.Tests.runtimeconfig.dev.json
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\bin\Release\netcoreapp2.0\TowerOfHanoi.Tests.dll
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\bin\Release\netcoreapp2.0\TowerOfHanoi.Tests.pdb
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\bin\Release\netcoreapp2.0\TowerOfHanoi.Logic.dll
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\bin\Release\netcoreapp2.0\TowerOfHanoi.Logic.pdb
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\obj\Release\netcoreapp2.0\TowerOfHanoi.Tests.csprojAssemblyReference.cache
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\obj\Release\netcoreapp2.0\TowerOfHanoi.Tests.csproj.CoreCompileInputs.cache
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\obj\Release\netcoreapp2.0\TowerOfHanoi.Tests.AssemblyInfoInputs.cache
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\obj\Release\netcoreapp2.0\TowerOfHanoi.Tests.AssemblyInfo.cs
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\obj\Release\netcoreapp2.0\TowerOfHanoi.Tests.csproj.CopyComplete
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\obj\Release\netcoreapp2.0\TowerOfHanoi.Tests.dll
+C:\Users\jonathana\Desktop\Latest\Source\TowerOfHanoi\TowerOfHanoi.Tests\obj\Release\netcoreapp2.0\TowerOfHanoi.Tests.pdb

@@ -1,0 +1,263 @@
+﻿<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tower Of Hanoi</title>
+</head>
+<body>
+
+  <script src="js/pixi.min.js"></script>
+  <script src="js/GreenSock/jquery.gsap.min.js"></script>
+  <script src="js/GreenSock/TimelineLite.min.js"></script>
+  <script src="js/GreenSock/TweenLite.min.js"></script>
+
+  <div>
+    <span>
+      <label for="diskRange">Select the number of disks :</label>
+      <input type="range" id="diskRange" name="diskRange" min="4" max="20" oninput="setup(this.value)">
+    </span>
+    <span>
+      <label for="diskRange">Speed :</label>
+      <input type="range" id="speedMultiplier" name="speedMultiplier" min="0.1" max="1" step="0.1" style="direction: rtl">
+    </span>
+  </div>
+  <div>
+    <button id="solveGame" onclick="solveGame(document.getElementById('diskRange').value)">Solve the puzzle</button>
+    <label id="error" style="color:red"></label>
+  </div>
+
+  <span id="canvas"></span>
+
+  <script type="text/javascript">
+
+    var numberOfDisks = 4;
+    const diskHeight = 20;
+    const peg0bottomX = 200;
+    var peg0bottomY;
+    const pegBaseHeight = 20;
+    const pegOffset = 300;
+    var poleHeight;
+    const timelineOffset = 20;
+    var disks;
+    var gameState;
+    var tl = new TimelineLite({ onComplete: playMove });
+    var currentMove;
+    var peg0;
+    var peg1;
+    var peg2;
+    var pegs;
+
+    let app = new PIXI.Application({
+      width: 1024,
+      height: 768,
+      antialias: true,
+      transparent: true,
+      resolution: 1
+    });
+
+    //document.body.appendChild(app.view);
+    document.getElementById("canvas").appendChild(app.view);
+
+    let moveText = new PIXI.Text("", { fontFamily: 'Arial', fontSize: 30, fill: 0x000000, align: 'centre' });
+
+    setup(document.getElementById("diskRange").value);
+
+    function setup(diskCount) {
+
+      app.stage.removeChildren();
+
+      peg0 = ({ 'disks': [], 'timelinePoints': { 'x': 0, 'y': 0 } });
+      peg0.name = "peg0";
+      peg1 = ({ 'disks': [], 'timelinePoints': { 'x': 0, 'y': 0 } });
+      peg1.name = "peg1";
+      peg2 = ({ 'disks': [], 'timelinePoints': { 'x': 0, 'y': 0 } });
+      peg2.name = "peg2";
+
+      numberOfDisks = diskCount;
+      disks = [numberOfDisks];
+
+      peg0bottomY = diskHeight * numberOfDisks + 100;
+      poleHeight = diskHeight * numberOfDisks + 40;
+
+      peg0.timelinePoints = findTimelinePointsOfPeg("peg0");
+      peg1.timelinePoints = findTimelinePointsOfPeg("peg1");
+      peg2.timelinePoints = findTimelinePointsOfPeg("peg2");
+
+      pegs = [peg0, peg1, peg2];
+
+      drawPoles();
+      drawDisks();
+      setDiskStartPositions();
+      drawPegBases();
+
+      app.stage.addChild(moveText);
+      moveText.position.set(findXOfPeg("peg1") - 50, peg0bottomY + 100);
+
+      showError("");
+      blockInput(false);
+    }
+
+    function setDiskStartPositions() {
+
+      var counter = numberOfDisks - 1;
+
+      for (var i = 0; i < numberOfDisks; i++) {
+
+        disks[counter].x = peg0bottomX;
+        disks[counter].y = peg0bottomY - diskHeight * i + 1;
+
+        //arrange the disks so smallest is at the top of the tower
+        //(position 0 on the peg holds the biggest disk, peg[number of disks] holds the smallest)
+        peg0.disks[i] = disks[counter];
+        counter--;
+      }
+    }
+
+    function blockInput(disabled) {
+      document.getElementById("diskRange").disabled = disabled;
+      document.getElementById("solveGame").disabled = disabled;
+    }
+
+    function solveGame(diskCount) {
+
+      blockInput(true);
+
+      const url = `http://localhost:5000/api/solveTowerOfHanoi/numberOfDisks/${diskCount}`;
+
+      fetch(url) // Call the fetch function passing the url of the API as a parameter
+        .then((resp) => resp.json())
+        .then(function (data) {
+
+          gameState = data;
+          currentMove = 0;
+          playMove();
+
+        })
+        .catch(function () {
+          showError('Could not connect to the server. Please check that the host is running and try again.');
+          blockInput(false);
+        });
+    }
+
+    function showError(error) {
+      document.getElementById("error").innerText = error;
+    }
+
+    function playMove() {
+      moveDisk(pegs[gameState.moves[currentMove].pegToMoveFrom], pegs[gameState.moves[currentMove].pegToMoveTo], true);
+
+      currentMove++;
+      moveText.text = 'Move:' + currentMove;
+
+      tl.play();
+    }
+
+    function moveDisk(fromPeg, toPeg, isAnimated) {
+
+      // ReSharper disable once CoercedEqualsUsing (tested and working as expected so disabling the warning)
+      if (fromPeg.length == 0) {
+        return;
+      }
+
+      //get the disk to move
+      var diskToMove = fromPeg.disks.pop();
+
+      //move to new peg
+      var newLength = toPeg.disks.push(diskToMove);
+
+      //find the position of the new peg
+      var diskNewXPosition = findXOfPeg(toPeg.name);
+      var diskNewYPosition = peg0bottomY - diskHeight * (newLength - 1);
+
+      //set the new position
+      if (!isAnimated) {
+        diskToMove.position.set(diskNewXPosition, diskNewYPosition);
+      } else {
+
+        tl.add(TweenLite.to(diskToMove, 1 * document.getElementById("speedMultiplier").value, { x: fromPeg.timelinePoints.x, y: fromPeg.timelinePoints.y }));
+        tl.add(TweenLite.to(diskToMove, 1 * document.getElementById("speedMultiplier").value, { x: toPeg.timelinePoints.x, y: toPeg.timelinePoints.y }));
+        tl.add(TweenLite.to(diskToMove, 1 * document.getElementById("speedMultiplier").value, { x: diskNewXPosition, y: diskNewYPosition }));
+
+      }
+    }
+
+    function findTimelinePointsOfPeg(pegName) {
+      if (!pegName) {
+        return;
+      }
+
+      var timeLinePointY = peg0bottomY - poleHeight - timelineOffset;
+      return ({ 'x': findXOfPeg(pegName), 'y': timeLinePointY });
+    }
+
+    function findXOfPeg(pegName) {
+      switch (pegName) {
+        case "peg0":
+          return peg0bottomX;
+        case "peg1":
+          return peg0bottomX + pegOffset;
+        case "peg2":
+          return peg0bottomX + (pegOffset * 2);
+      }
+    }
+
+    function drawPoles() {
+
+      const poleWidth = 20;
+
+      var poleXWithOffset = peg0bottomX;
+
+      for (var i = 0; i < 3; i++) {
+
+        var pole = new PIXI.Graphics();
+        pole.beginFill('0x994d00');
+        pole.drawRoundedRect(poleXWithOffset, peg0bottomY, poleWidth, poleHeight, 9);
+        pole.endFill();
+        pole.pivot.set(poleWidth / 2, poleHeight - diskHeight - 20);
+        app.stage.addChild(pole);
+
+        poleXWithOffset += pegOffset;
+      }
+    }
+
+    function drawPegBases() {
+
+      var baseWidth = disks[numberOfDisks - 1].width;
+      var baseXWithOffset = peg0bottomX;
+
+      for (var i = 0; i < 3; i++) {
+
+        var base = new PIXI.Graphics();
+        base.beginFill('0x994d00');
+        base.drawRect(baseXWithOffset, peg0bottomY + diskHeight, baseWidth, pegBaseHeight);
+        base.endFill();
+        base.pivot.set(base.width / 2, 0);
+        app.stage.addChild(base);
+
+        baseXWithOffset += pegOffset;
+      }
+    }
+
+    function drawDisks() {
+
+      var diskStartWidth = 30;
+      var widthIncrement = 15;
+
+      for (var i = 0; i < numberOfDisks; i++) {
+        var disk = new PIXI.Graphics();
+        disk.beginFill('0x' + (Math.random() * 0xFFFFFF << 0).toString(16));
+        disk.drawRoundedRect(0, 0, diskStartWidth + widthIncrement, diskHeight, 10);
+        widthIncrement = widthIncrement + 10;
+        disk.endFill();
+        disk.pivot.set(disk.width / 2, 0);
+        disk.x = 300;
+        disk.y = 20 * i + 1;
+        app.stage.addChild(disk);
+
+        disks[i] = disk;
+      }
+    }
+
+  </script>
+</body>
+</html>

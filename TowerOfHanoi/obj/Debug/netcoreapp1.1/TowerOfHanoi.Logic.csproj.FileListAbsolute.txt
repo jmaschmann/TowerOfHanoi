@@ -1,0 +1,8 @@
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoi\bin\Debug\netcoreapp1.1\TowerOfHanoi.Logic.deps.json
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoi\bin\Debug\netcoreapp1.1\TowerOfHanoi.Logic.dll
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoi\bin\Debug\netcoreapp1.1\TowerOfHanoi.Logic.pdb
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoi\obj\Debug\netcoreapp1.1\TowerOfHanoi.Logic.csproj.CoreCompileInputs.cache
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoi\obj\Debug\netcoreapp1.1\TowerOfHanoi.Logic.AssemblyInfoInputs.cache
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoi\obj\Debug\netcoreapp1.1\TowerOfHanoi.Logic.AssemblyInfo.cs
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoi\obj\Debug\netcoreapp1.1\TowerOfHanoi.Logic.dll
+C:\Users\jonathana\Desktop\TowerOfHanoi\TowerOfHanoi\obj\Debug\netcoreapp1.1\TowerOfHanoi.Logic.pdb
